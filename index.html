@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Chat Interface</title>
+    <title>Chat Interface</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -58,6 +58,10 @@
         }
         .message.user {
             background: #dcf8c6;
+        }
+        .message.model {
+            background: #e1f5fe;
+            text-align: right;
         }
         .message-input {
             display: flex;
@@ -127,4 +131,21 @@
             messagesContainer.appendChild(messageElement);
             input.value = '';
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
- 
+
+            // Simulate a response from a large language model
+            setTimeout(function() {
+                var responseElement = document.createElement('div');
+                responseElement.classList.add('message', 'model');
+                responseElement.textContent = "Response to: " + message;
+                messagesContainer.appendChild(responseElement);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 1000); // Simulate response time
+        }
+
+        document.getElementById('add-chat').addEventListener('click', createChatContainer);
+
+        // Create the initial chat container
+        createChatContainer();
+    </script>
+</body>
+</html>
